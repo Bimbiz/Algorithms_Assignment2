@@ -20,7 +20,7 @@ public class ShellsSort {
         // ShellSort
         for(int gap : gaps) {
             if(gap <= 0) continue; // Protection from 0 and negative values
-            for(int i = gap; i < n, i++) {
+            for(int i = gap; i < n; i++) {
                 int temp = arr[i];
                 int j = i;
                 while (j >= gap && arr[j - gap] > temp) {
@@ -40,6 +40,21 @@ public class ShellsSort {
         while(gap > 0) {
             temp[k++] = gap;
             gap /= 2;
+        }
+        return Arrays.copyOf(temp, k);
+    }
+
+    //Kuth's gaps
+    private static int[] knuthGaps(int n) {
+        int h = 1;
+        while ( h < n/3 ) {
+            h = 3 * h + 1;
+        }
+        int temp[] = new int[40];
+        int k = 0;
+        while ( h > 0 ){
+            temp[k++] = h;
+            h = (h - 1) / 3;
         }
         return Arrays.copyOf(temp, k);
     }
