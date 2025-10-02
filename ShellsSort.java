@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class ShellsSort {
     // Main ShellSort method 
     public static void shellSort(int[] arr, String gapType) {
-        int n = arr.Length;
+        int n = arr.length;
         int[] gaps;
         // Choosing gap sequense
         switch (gapType.toLowerCase()) {
@@ -30,5 +30,17 @@ public class ShellsSort {
                 arr[j] = temp;
             }
         }
+    }
+
+    //Shell's gaps
+    private static int[] shellGaps(int n) {
+        int gap = n/2;
+        int[] temp = new int[32];
+        int k = 0;
+        while(gap > 0) {
+            temp[k++] = gap;
+            gap /= 2;
+        }
+        return Arrays.copyOf(temp, k);
     }
 } 
