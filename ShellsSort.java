@@ -58,4 +58,22 @@ public class ShellsSort {
         }
         return Arrays.copyOf(temp, k);
     }
+
+    //Sedgewick's gaps
+    private static int[] sedgewickGaps(int n){
+        int[] temp = new int[40];
+        int k = 0;
+        int gap;
+        for (int i = 0; ; i++) {
+            gap = (int) (9 * (Math.pow(4, i)) - 9 * Math.pow(2, i) + 1);
+            if (gap >=n ) break;
+            temp[k++] += gap;
+            gap = (int) ((Math.pow(4, i + 1)) - 3 * Math.pow(2, i + 1) + 1);
+            if (gap >=n ) break;
+            temp[k++] += gap;
+        }
+        int[] gaps = new int[k];
+        for (int i = 0; i < k; i++) gaps[i] = temp[k - 1 - i];
+        return gaps;
+    }
 } 
